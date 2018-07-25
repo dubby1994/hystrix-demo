@@ -54,6 +54,8 @@ public class ConfigureCircuitBreaker1 extends HystrixCommand<String> {
                         .withMetricsRollingPercentileWindowBuckets(10)
                         //最多只统计100个，超过就只统计最新的100个
                         .withMetricsRollingPercentileBucketSize(100)
+                        //统计成功和失败的比例的时间间隔，如果太短，那可能会导致cpu被占用很多
+                        .withMetricsHealthSnapshotIntervalInMilliseconds(500)
                 )
                 //线程池
                 .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("TestThreadPool"))
