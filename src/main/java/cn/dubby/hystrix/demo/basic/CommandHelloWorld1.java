@@ -14,11 +14,12 @@ public class CommandHelloWorld1 extends HystrixCommand<String> {
 
     @Override
     protected String run() {
+//        throw new RuntimeException();
         return "Hello " + name + "!\t(ThreadName is:)" + Thread.currentThread().getName();
     }
 
     @Override
     protected String getFallback() {
-        return "Fallback";
+        return "Fallback\t"+Thread.currentThread();
     }
 }

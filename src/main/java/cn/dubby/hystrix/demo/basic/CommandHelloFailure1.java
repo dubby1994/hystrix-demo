@@ -19,7 +19,7 @@ public class CommandHelloFailure1 extends HystrixCommand<String> {
 
     @Override
     protected String getFallback() {
-        return "Hello Failure " + name + "!";
+        return "Hello Failure " + name + "!\t" + Thread.currentThread().getName();
     }
 
 }
